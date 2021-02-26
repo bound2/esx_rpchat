@@ -2,6 +2,9 @@ RegisterNetEvent('esx_rpchat:sendProximityMessage')
 AddEventHandler('esx_rpchat:sendProximityMessage', function(playerId, title, message, color)
 	local player = PlayerId()
 	local target = GetPlayerFromServerId(playerId)
+    if Config.EnableOneSyncInfinity and target == -1 then
+        return
+    end
 
 	local playerPed = PlayerPedId()
 	local targetPed = GetPlayerPed(target)
